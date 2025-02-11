@@ -28,6 +28,18 @@ class Product:
         return f"{self.name}, Price: {self.price}, Quantity: {self.quantity}"
 
     def buy(self, quantity) -> None:
+        """
+        Purchase a specified quantity of the product.
+
+        Args:
+            quantity (int): The quantity of the product to purchase.
+
+        Returns:
+            float: The total cost of the purchase.
+
+        Raises:
+            ValueError: If the quantity is not positive or if there is not enough stock.
+        """
         if quantity <= 0:
             raise ValueError("Quantity must be positive.")
         if quantity > self.quantity:
@@ -35,4 +47,4 @@ class Product:
         self.quantity -= quantity
         if self.quantity == 0:
             self.deactivate()
-            return self.price * quantity
+        return self.price * quantity
