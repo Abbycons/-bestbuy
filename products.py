@@ -56,4 +56,3 @@ class Product:
         if self.quantity == 0:
             self.deactivate()
         return self.price * quantity
-
