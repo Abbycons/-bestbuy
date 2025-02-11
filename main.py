@@ -47,8 +47,8 @@ def start(store):
                 else:
                     print("Order failed. Please check the product availability.")
 
-            except (ValueError, IndexError):
-                print("Invalid input. Please try again.")
+            except (ValueError, IndexError) as e:
+                print(e)
 
         elif choice == "4":
             print("Thank you for shopping with us. Goodbye!")
