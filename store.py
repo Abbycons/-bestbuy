@@ -1,27 +1,5 @@
 from typing import List
-
-class Product:
-    """
-    Represents a product in the store.
-    Example implementation for resolving 'Product' reference.
-    """
-    def __init__(self, name: str, price: float, quantity: int):
-        self.name = name
-        self.price = price
-        self.quantity = quantity
-        self.active = True
-
-    def is_active(self) -> bool:
-        return self.active and self.quantity > 0
-
-    def get_quantity(self) -> int:
-        return self.quantity
-
-    def buy(self, amount: int) -> float:
-        if amount <= 0 or amount > self.quantity:
-            raise ValueError("Invalid purchase amount")
-        self.quantity -= amount
-        return amount * self.price
+from products import Product
 
 
 class Store:
