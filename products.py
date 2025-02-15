@@ -4,15 +4,13 @@ class Product:
     def __init__(self, name, price, quantity):
         """Initialize the product with name, price, and quantity."""
         if not isinstance(name, str) or not isinstance(price, (int, float)) or not isinstance(quantity, int):
-            raise TypeError("Invalid product details.")
+            raise TypeError("Invalid data type for product details.")
+        if not name or price < 0 or quantity < 0:
+            raise ValueError("Invalid product details.")
         self.name = name
         self.price = price
         self.quantity = quantity
         self.active = True
-
-    def get_quantity(self) -> float:
-        """Return the current quantity of the product."""
-        return float(self.quantity)
 
     def get_quantity(self) -> float:
         """Return the current quantity of the product."""
@@ -24,10 +22,9 @@ class Product:
             raise TypeError("Quantity must be an integer.")
         if quantity < 0:
             raise ValueError("Quantity cannot be negative.")
-        if quantity < 0:
-            raise ValueError("Quantity cannot be negative.")
+
         self.quantity = quantity
-        if self.quantity <= 0:
+        if quantity <= 0:
             self.deactivate()
 
     def is_activate(self) -> bool:

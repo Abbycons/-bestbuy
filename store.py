@@ -13,7 +13,8 @@ class Store:
     def add_product(self, product: Product):
         """Add a product to the store's inventory."""
         if not isinstance(product, Product):
-            self.products.append(product)
+            raise TypeError("product must be an instance of Product.")
+        self.products.append(product)
 
     def remove_product(self, product: Product):
         """Remove a product from the store's inventory."""
