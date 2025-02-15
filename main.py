@@ -46,13 +46,14 @@ def make_order(store):
         print("Invalid input. Please enter a valid product number and quantity.")
 
 
-def start(store):
-    """
-    Start the store interface and handle user interactions.
+def main():
+    """Main function to handle user interactions."""
+    actions = {
+        "1": list_products,
+        "2": show_total_quantity,
+        "3": make_order
+    }
 
-    Args:
-        store (Store): The Store object representing the store's inventory.
-    """
     while True:
         print("\nWelcome to Best Buy!")
         print("1. List all products in store")
@@ -62,18 +63,16 @@ def start(store):
 
         choice = input("Please choose an option (1-4): ")
 
-        if choice == "1":
-            list_products(store)
-        elif choice == "2":
-            show_total_quantity(store)
-        elif choice == "3":
-            make_order(store)
-        elif choice == "4":
+        if choice == "4":
             print("Thank you for shopping with us. Goodbye!")
             break
+
+        action = actions.get(choice)
+        if action:
+           action(best_buy)
         else:
-            print("Invalid choice. Please select a valid option (1-4).")
+           print("Invalid choice. Please select a valid option (1-4).")
 
 
-# Start the program
-start(best_buy)
+if __name__ == "__main__":
+    main()
